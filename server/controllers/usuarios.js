@@ -2,8 +2,9 @@ const express = require('express')
 const app = express()
 const bcrypt = require("bcrypt")
 const _ = require("underscore")
+const autentication = require("../midlewares/auth")
 const Usuarios = require("../models/usuarios");
-app.get('/usuario', function (req, res) {
+app.get('/usuario', autentication.valToken, (req, res) => {
 
     let desce = Number(req.query.desde) || 0;
     let hasta = Number(req.query.hasta) || 3;

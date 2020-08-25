@@ -4,14 +4,15 @@ const express = require('express')
 const app = express()
 const bodyParser = require("body-parser")
 const mongoose = require('mongoose')
-
+const autentication=require("../server/midlewares/auth")
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
 
-app.use(require("./controllers/usuarios"))
+app.use(require("./controllers/index"))
+
 
 mongoose.connect(process.env.NODE_ENVDB,
     { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true },
